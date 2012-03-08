@@ -1,0 +1,105 @@
+application: pythonmeme
+version: 5
+runtime: python
+api_version: 1
+#threadsafe: no
+#
+#libraries:
+#- name: django
+#  version: "1.2"
+#
+#builtins:
+#- django_wsgi: on
+
+handlers:
+- url: /feed 
+  script: hello.py
+
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico  
+
+- url: /apple-touch-icon.png
+  static_files: touch-icon-iphone.png
+  upload: touch-icon-iphone.png
+
+- url: //apple-touch-icon-precomposed.png
+  static_files: touch-icon-iphone.png
+  upload: touch-icon-iphone.png
+
+- url: /touch-icon-iphone.png
+  static_files: touch-icon-iphone.png
+  upload: touch-icon-iphone.png
+
+- url: /touch-icon-iphone4.png
+  static_files: touch-icon-iphone4.png
+  upload: touch-icon-iphone4.png
+
+- url: /touch-icon-ipad.png
+  static_files: touch-icon-ipad.png
+  upload: touch-icon-ipad.png
+ 
+- url: /robots.txt
+  static_files: robots.txt
+  upload: robots.txt
+
+- url: /submit
+  static_files: Submit.html
+  upload: Submit.html
+  login: required
+ 
+- url: /about
+  static_files: about.html
+  upload: about.html
+
+- url: /bookmarklet
+  static_files: Bookmarklet.html 
+  upload: Bookmarklet.html
+
+- url: /static 
+  static_dir: static
+
+- url: /agg 
+  script: /agg/reader.py 
+  login: admin
+
+- url: /twitter
+  script: /twitter/aggr.py 
+  login: admin
+
+- url: /gplus
+  script: /gplus/aggr.py 
+  login: admin
+
+- url: /hacknews
+  script: /hacknews/aggr.py 
+  login: admin
+ 
+- url: /feedbundle
+  script: /feedbundle/aggr.py 
+  login: admin
+
+- url: /del
+  script: /hello.py
+  login: admin
+
+- url: /login
+  static_files: Submit.html
+  upload: Submit.html
+  login: required
+
+- url: /init 
+  script: init.py 
+  login: admin
+
+- url: /admin/{0,1}
+  script: $PYTHON_LIB/google/appengine/ext/admin
+  login: admin
+
+- url: /admin/.*
+  script: $PYTHON_LIB/google/appengine/ext/admin
+  login: admin
+
+- url: /.* 
+  script: hello.py
+

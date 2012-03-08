@@ -1,0 +1,17 @@
+cron:
+- description: twitter job
+  url: /twitter
+  schedule: every 2 hours 
+- description: gplus job
+  url: /gplus
+  schedule: every 2 hours 
+- description: hacknews job
+  url: /hacknews
+  schedule: every 4 hours 
+- description: feedbundle job
+  url: /feedbundle
+  schedule: every 6 hours 
+ 
+ 
+
+

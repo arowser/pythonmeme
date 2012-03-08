@@ -1,0 +1,42 @@
+#todo get vote from https://www.addthis.com/help/client-api
+#todo id to page
+#todo search function
+#todo tag feed
+#todo if tag cloud
+#todo comments
+#todo hot for week for monty for year
+#todo code clean
+#todo auto post to social media
+#todo schedule update vote to trace break hot news
+#todo add book and job  and  video tag learning  ppt tag
+#todo switch to queue
+#todo rank caculate
+
+#todo merge django to 1.2
+#todo ADD facebook src/djgg/delicio/feed agg/
+#http://badges.del.icio.us/feeds/json/url/data?hash=1b9d64f92e36860eced9d68ba7b74708
+#http://feeds.delicious.com/v2/json/urlinfo/data?url=www.google.com
+#https://api.facebook.com/method/fql.query?query=fql&format=json&access_token=t
+#
+#http://trac.midgard-project.org/browser/trunk/midcom/org.maemo.socialnews/calculator.php?rev=11348
+#http://trac.midgard-project.org/browser/branches/ragnaroek/midcom/org.maemo.socialnews/calculator.php
+#https://github.com/nemein/com_meego_planet/blob/master/calculate.php
+#https://github.com/nemein/com_meego_planet
+#http://news.ycombinator.com/item?id=2347428
+#http://www.saschakimmel.com/2010/05/how-to-get-statistics-for-a-facebook-like-button-and-shared-urls/
+#https://github.com/vitobotta/share_counts
+#https://github.com/bolster/share_count/tree/master/share_count/services
+
+#todo deal more than one link
+#todo add hot vote calute, rt times, g times
+#   extract short url
+#todo tag 
+
+#todo vote src
+#    google search vote
+#todo user
+#todo top user-->pythoner
+#todo add other keyword like django flask webpy
+#todo mobile version
+#todo readability
+

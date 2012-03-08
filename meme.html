@@ -1,0 +1,157 @@
+{% spaceless %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Python Hacker News</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="/static/news.css" rel="stylesheet" type="text/css" />
+        <link rel="apple-touch-icon" href="touch-icon-iphone.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="touch-icon-ipad.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="touch-icon-iphone4.png" />
+        <link rel="alternate" type="application/rss+xml" title="Feedburner Pythonmem Feed" href="http://feeds.feedburner.com/pythonmeme">
+        <link rel="alternate" type="application/rss+xml" title="Pythonmem Feed" href=/feed />
+        <script type="text/javascript">
+
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-29270129-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+             })();
+
+</script>
+    </head>
+    <body>
+        <center>
+        <table border="0" cellpadding="0" cellspacing="0" width="85%" bgcolor="#f6f6ef">
+            <tr>
+                <td bgcolor="#00a300">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" style="padding:2px">
+                        <tr>
+                            <td style="width:18px;padding-right:4px">
+                                <a href="http://pythonmeme.com">
+                                    <img src="static/logo.png" width="16" height="16" style="border:1px #00a300 solid;">
+                                </a>
+                            </td>
+                            <td style="line-height:12pt; height:10px;">
+                                <span class="pagetop">
+                                    <b>
+                                        <a href="/">PythonMeme</a>
+                                    </b>
+                                    <img src="static/s.gif" height="1" width="10">
+                                    <a href="newest">new
+                                    </a> | 
+                                    <a href="hot">hot
+                                    </a> | 
+                                    <a href="submit">submit
+                                    </a> | 
+                                    <a href="http://feeds.feedburner.com/pythonmeme">Rss
+                                    </a>
+                                </span>
+                            </td>
+                            <td style="text-align:right;padding-right:4px;">
+                                <span class="pagetop">
+                                    <a href="/login">login
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr style="height:10px">
+        </tr>
+        <tr>
+            <td>
+                <table border="0" cellpadding="0" cellspacing="0">
+                    {% for l in list %}
+                    <tr>
+                        <td align="right" valign="top" class="title">{{ l.count }}
+                        </td>
+                        <td>
+                            <center>
+                                <a id="nil" >
+                                    <img src="static/grayarrow.gif" border="0" vspace="3" hspace="2">
+                                </a>
+                            </center>
+                        </td>
+                        <td class="title">
+                            <a href={{l.url}} rel="nofollow">{{l.title}}
+                            </a>
+                            <span class="comhead"> {{l.srcsite}} 
+                            </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                        </td>
+                        <td class="subtext">
+                            <span >{{l.vote}} points
+                            </span> by 
+                            <a href={{l.origin}}>{{l.usr}} </a>
+                            {{l.date}}
+                        </td>
+                    </tr>
+                    <tr style="height:5px"></tr>
+                    {% endfor %} 
+
+                    <tr style="height:10px">
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                        </td>
+                        <td class="title">
+                            <a href="/{{suffix}}?p={{ page }}" rel="nofollow">More
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <img src="static/s.gif" height="10" width="0">
+            <table width="100%" cellspacing="0" cellpadding="1">
+                <tr>
+                    <td bgcolor="#00a300">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <center>
+            <a href="http://feeds.feedburner.com/pythonmeme">Rss
+            </a>
+            | 
+            <a href="mailto:support@pythonmeme.com">ContactUs
+            </a>   
+            | 
+            <a href="/about">About
+            </a>
+            | 
+            <a href="http://www.rudymeme.com">RudyMeme
+            </a>
+            | 
+            <a href="http://www.phpmeme.com">PhpMeme
+            </a>
+        </center>
+    </td>
+</tr>
+            </tbody>
+        </table>
+        </center>
+    </body>
+</html>
+{% endspaceless %}
+
