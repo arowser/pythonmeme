@@ -60,8 +60,11 @@ def gpMeme(keyword):
     result = webfetch("https://www.googleapis.com/plus/v1/activities?lang=en&maxResults=20&orderBy=recent&query=%s&key=%s" % (keyword, key), deadline=30, validate_certificate=False)
     jsondata = result.content
     data = simplejson.loads(jsondata)
-    nextlink = data["nextLink"] + "&key=%s" % key
     extra_data(data, keyword)
+    if "nextLink" in data:
+        nextlink = data["nextLink"] + "&key=%s" % key
+    else:
+        return
     for i in range(4):
        result = webfetch(nextlink, deadline=30, validate_certificate=False)
        jsondata = result.content
