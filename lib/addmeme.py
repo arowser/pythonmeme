@@ -101,7 +101,7 @@ def gplusvote(link):
     gvote = int(urlrt[0]['result']['metadata']['globalCounts']['count'])
     return gvote
 
-filtersite = ["plus.google.com","www.tumblerandtipsy.com", "www.youtube.com", "instagr.am", "twitpic.com", "www.mobypicture.com", "www.huffingtonpost.com", "vb.net", "www.sourcefabric.org", "twitvid.com", "www.facebook.com", "paste.pocoo.org", "www.elietahari.com"]
+filtersite = ["plus.google.com","www.tumblerandtipsy.com", "www.youtube.com", "instagr.am", "twitpic.com", "www.mobypicture.com", "www.huffingtonpost.com", "vb.net", "www.sourcefabric.org", "twitvid.com", "www.facebook.com", "paste.pocoo.org", "www.elietahari.com", "orangecow.org" , "smartdrugsforthought.com", "www.boston.com"]
 
 def geturls(txt):
    
@@ -113,7 +113,7 @@ def geturls(txt):
        link=link[0]
 
        """ filter google trace code in url """
-       end = link.find("\?utm_source")
+       end = link.find("?utm_source")
        if end > 0 :
            link=link[:end]
 
@@ -165,7 +165,11 @@ def getTitleLink(link):
     title = title.group(1)
 
     if title=='':
-        title=link
+        return None,None
+    if title.startswith('Page Not Found'):
+        return None,None
+    if title.startswith('Oops! Something Bad Happened'):
+        return None,None
     if is_snake(title) :  #or is_snake(content):
         url = linkitem()
         url.valid = 0 

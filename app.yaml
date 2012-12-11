@@ -23,7 +23,7 @@ handlers:
   static_files: touch-icon-iphone.png
   upload: touch-icon-iphone.png
 
-- url: //apple-touch-icon-precomposed.png
+- url: /apple-touch-icon-precomposed.png
   static_files: touch-icon-iphone.png
   upload: touch-icon-iphone.png
 

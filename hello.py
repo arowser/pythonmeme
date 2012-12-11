@@ -50,7 +50,7 @@ class FeedHandler(webapp.RequestHandler):
             feed.add_item(title =l.title, link=l.url, description = l.txt, pubdate=l.date)
         feedtxt = feed.writeString('utf-8')
     	self.response.out.write(feedtxt)
-        memcache.add("feed", data, 3600)
+        memcache.add("feed", data, 9600)
 
 class TopFeedHandle(webapp.RequestHandler):
     def get(self,pageNumber=1):
@@ -225,7 +225,7 @@ class memeHandle(webapp.RequestHandler):
         path = os.path.join(os.path.dirname(__file__), 'meme.html')
 
         data = template.render(path, its)
-        memcache.add("page%d" % pageNumber, data, 2400)
+        memcache.add("page%d" % pageNumber, data, 9600)
         self.response.out.write(data)
 
 class newestHandle(webapp.RequestHandler):
@@ -263,7 +263,7 @@ class newestHandle(webapp.RequestHandler):
         its['suffix'] = 'newest'
         path = os.path.join(os.path.dirname(__file__), 'meme.html')
         data = template.render(path, its)
-        memcache.add("newest%d" % pageNumber, data, 2400)
+        memcache.add("newest%d" % pageNumber, data, 9600)
         self.response.out.write(data)
  
 class hotHandle(webapp.RequestHandler):
