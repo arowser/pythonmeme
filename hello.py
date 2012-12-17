@@ -33,7 +33,8 @@ class FeedHandler(webapp.RequestHandler):
             self.response.out.write(data)
             return
         else:
-            entries = item.all().order('-time').fetch(20)
+            #entries = item.all().order('-time').fetch(20)
+            normallist = db.GqlQuery("SELECT * FROM item ORDER BY TIME DESC LIMIT 20")
     	self.response.headers['Content-Type'] = 'application/atom+xml'
 
         title = "pythonmeme.com news"
@@ -55,9 +56,12 @@ class FeedHandler(webapp.RequestHandler):
 class TopFeedHandle(webapp.RequestHandler):
     def get(self,pageNumber=1):
         pageNumber = int(pageNumber)
-	normallist = items.all().order('-published').fetch(100)
-        newlist = items.all().order('-published').fetch(10)
-        hotlist = items.all().order('-hot').fetch(10)
+     	#normallist = items.all().order('-published').fetch(100)
+        normallist = db.GqlQuery("SELECT * FROM item ORDER BY published DESC LIMIT 100")
+        #newlist = items.all().order('-published').fetch(10)
+        newlist = db.GqlQuery("SELECT * FROM item ORDER BY published DESC LIMIT 10")
+        #hotlist = items.all().order('-hot').fetch(10)
+        hotlist = db.GqlQuery("SELECT * FROM item ORDER BY hot DESC LIMIT 10")
 
         its = {}
         its['list'] = normallist
@@ -76,10 +80,13 @@ class AuthorHandle(webapp.RequestHandler):
         if Author != None:
             Author = urllib.unquote(Author)
             Author = unicode(Author,'utf-8')
-        normallist = items.all().filter('author = ', Author).fetch(limit=10, offset = (pageNumber -1 ) * 10)
+        #normallist = items.all().filter('author = ', Author).fetch(limit=10, offset = (pageNumber -1 ) * 10)
+        normallist = db.GqlQuery("SELECT * FROM item WHERE author =:1 LIMIT :2,:3", Author, (pageNumber -1 ) * 10, pageNumber * 10 )
 
-        newlist = items.all().order('-published').fetch(10)
-        hotlist = items.all().order('-hot').fetch(10)
+        #newlist = items.all().order('-published').fetch(10)
+        newlist = db.GqlQuery("SELECT * FROM item ORDER BY published DESC LIMIT 10")
+        #hotlist = items.all().order('-hot').fetch(10)
+        hotlist = db.GqlQuery("SELECT * FROM item ORDER BY hot DESC LIMIT 10")
 
         for l in normallist :
             l.date = datetime.datetime.fromtimestamp(l.published)
@@ -202,7 +209,9 @@ class memeHandle(webapp.RequestHandler):
             self.response.out.write(data)
             return
         else:
-            normallist = item.all().order('-time').fetch(limit=20, offset=(pageNumber-1) * 20)
+            #normallist = item.all().order('-time').fetch(limit=20, offset=(pageNumber-1) * 20)
+            normallist = db.GqlQuery("SELECT * FROM item ORDER BY TIME DESC LIMIT " + str((pageNumber-1)*20) + "," + str(pageNumber * 20))
+
 
         for count, l in enumerate(normallist) :
             l.count = (pageNumber - 1) * 20 + count + 1
@@ -241,7 +250,8 @@ class newestHandle(webapp.RequestHandler):
             self.response.out.write(data)
             return
         else:
-            normallist = item.all().order('-time').fetch(limit=20, offset=(pageNumber-1) * 20)
+            #normallist = item.all().order('-time').fetch(limit=20, offset=(pageNumber-1) * 20)
+            normallist = db.GqlQuery("SELECT * FROM item ORDER BY TIME DESC LIMIT " + str((pageNumber-1)*20) + "," + str(pageNumber * 20))
         
         for count, l in enumerate(normallist) :
             l.count = (pageNumber - 1) * 20 + count + 1
@@ -279,7 +289,8 @@ class hotHandle(webapp.RequestHandler):
             self.response.out.write(data)
             return
         else:
-            normallist = item.all().order('-vote').fetch(limit=20, offset=(pageNumber-1) * 20)
+            #normallist = item.all().order('-vote').fetch(limit=20, offset=(pageNumber-1) * 20)
+            normallist = db.GqlQuery("SELECT * FROM item ORDER BY vote DESC LIMIT " + str((pageNumber-1)*20) + "," + str(pageNumber * 20))
 
         for count, l in enumerate(normallist) :
             l.count = (pageNumber - 1) * 20 + count + 1
